@@ -66,5 +66,13 @@ class LogicsTest {
             assertFalse(logic.hasKnight(PAWN_POSITION.getX(), PAWN_POSITION.getY()));
         }
 
+        @Test
+        void testKnightCannotMoveOutOfBoard() {
+            var illegalPosition = new Pair<>(-1, -1);
+            assertThrows(
+                    IndexOutOfBoundsException.class,
+                    () -> logic.hit(illegalPosition.getX(), illegalPosition.getY())
+            );
+        }
     }
 }
