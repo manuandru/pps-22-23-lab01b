@@ -10,34 +10,37 @@ import java.util.function.BiFunction;
 import static org.junit.jupiter.api.Assertions.*;
 class LogicsTest {
 
-    private static final int BOARD_SIZE = 3;
-    private Logics logic;
+    static class TestNormalBehaviour {
 
-    @BeforeEach
-    void setUp() {
-        this.logic = new LogicsImpl(BOARD_SIZE);
-    }
+        private static final int BOARD_SIZE = 3;
+        private Logics logic;
 
-    @Test
-    void testPawnIsExactlyOne() {
-        assertEquals(1, countNumberOf(this.logic::hasPawn));
-    }
-
-    @Test
-    void testKnightIsExactlyOne() {
-        assertEquals(1, countNumberOf(this.logic::hasKnight));
-    }
-
-    private long countNumberOf(BiFunction<Integer, Integer, Boolean> chessType) {
-        List<Pair<Integer, Integer>> allPositions = new ArrayList<>();
-        for (var i = 0; i < BOARD_SIZE; i++) {
-            for (var j = 0; j < BOARD_SIZE; j++) {
-                allPositions.add(new Pair<>(i, j));
-            }
+        @BeforeEach
+        void setUp() {
+            this.logic = new LogicsImpl(BOARD_SIZE);
         }
-        return allPositions.stream()
-                .map(p -> chessType.apply(p.getX(), p.getY()))
-                .filter(Boolean::booleanValue)
-                .count();
+
+        @Test
+        void testPawnIsExactlyOne() {
+            assertEquals(1, countNumberOf(this.logic::hasPawn));
+        }
+
+        @Test
+        void testKnightIsExactlyOne() {
+            assertEquals(1, countNumberOf(this.logic::hasKnight));
+        }
+
+        private long countNumberOf(BiFunction<Integer, Integer, Boolean> chessType) {
+            List<Pair<Integer, Integer>> allPositions = new ArrayList<>();
+            for (var i = 0; i < BOARD_SIZE; i++) {
+                for (var j = 0; j < BOARD_SIZE; j++) {
+                    allPositions.add(new Pair<>(i, j));
+                }
+            }
+            return allPositions.stream()
+                    .map(p -> chessType.apply(p.getX(), p.getY()))
+                    .filter(Boolean::booleanValue)
+                    .count();
+        }
     }
 }
