@@ -74,5 +74,16 @@ class LogicsTest {
                     () -> logic.hit(illegalPosition.getX(), illegalPosition.getY())
             );
         }
+
+        @Test
+        void testKnightDoNotHitPawn() {
+            var emptyPosition = new Pair<>(0, 1);
+            assertFalse(logic.hit(emptyPosition.getX(), emptyPosition.getY()));
+        }
+
+        @Test
+        void testKnightHitPawn() {
+            assertTrue(logic.hit(PAWN_POSITION.getX(), PAWN_POSITION.getY()));
+        }
     }
 }
