@@ -9,25 +9,24 @@ import java.util.function.BiFunction;
 
 import static org.junit.jupiter.api.Assertions.*;
 class LogicsTest {
+    private static final int BOARD_SIZE = 3;
+    private static Logics logic;
 
-    static class TestNormalBehaviour {
-
-        private static final int BOARD_SIZE = 3;
-        private Logics logic;
+    static class NormalBehaviourTest {
 
         @BeforeEach
         void setUp() {
-            this.logic = new LogicsImpl(BOARD_SIZE);
+            logic = new LogicsImpl(BOARD_SIZE);
         }
 
         @Test
         void testPawnIsExactlyOne() {
-            assertEquals(1, countNumberOf(this.logic::hasPawn));
+            assertEquals(1, countNumberOf(logic::hasPawn));
         }
 
         @Test
         void testKnightIsExactlyOne() {
-            assertEquals(1, countNumberOf(this.logic::hasKnight));
+            assertEquals(1, countNumberOf(logic::hasKnight));
         }
 
         private long countNumberOf(BiFunction<Integer, Integer, Boolean> chessType) {
@@ -42,5 +41,30 @@ class LogicsTest {
                     .filter(Boolean::booleanValue)
                     .count();
         }
+    }
+
+    static class BasicLogicTest {
+
+
+        public static final Pair<Integer, Integer> KNIGHT_POSITION = new Pair<>(0, 0);
+        public static final Pair<Integer, Integer> PAWN_POSITION = new Pair<>(1, 2);
+
+        @BeforeEach
+        void setUp() {
+            logic = new LogicsImpl(PAWN_POSITION, KNIGHT_POSITION, BOARD_SIZE);
+        }
+
+        @Test
+        void testPawnCorrectlyAdded() {
+            assertTrue(logic.hasPawn(PAWN_POSITION.getX(), PAWN_POSITION.getY()));
+            assertFalse(logic.hasPawn(KNIGHT_POSITION.getX(), KNIGHT_POSITION.getY()));
+        }
+
+        @Test
+        void testKnightCorrectlyAdded() {
+            assertTrue(logic.hasKnight(KNIGHT_POSITION.getX(), KNIGHT_POSITION.getY()));
+            assertFalse(logic.hasKnight(PAWN_POSITION.getX(), PAWN_POSITION.getY()));
+        }
+
     }
 }
