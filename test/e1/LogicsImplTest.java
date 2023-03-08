@@ -2,9 +2,9 @@ package e1;
 
 import e1.logic.Logics;
 import e1.logic.LogicsImpl;
-import e1.logic.position.PiecePosition;
-import e1.logic.position.PiecePositionFactory;
-import e1.logic.position.PiecePositionFactoryImpl;
+import e1.logic.position.Position;
+import e1.logic.position.PositionFactory;
+import e1.logic.position.PositionFactoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -35,8 +35,8 @@ class LogicsTest {
         }
 
         private long countNumberOf(BiFunction<Integer, Integer, Boolean> chessType) {
-            PiecePositionFactory factory = new PiecePositionFactoryImpl();
-            List<PiecePosition> allPositions = new ArrayList<>();
+            PositionFactory factory = new PositionFactoryImpl();
+            List<Position> allPositions = new ArrayList<>();
             for (var i = 0; i < BOARD_SIZE; i++) {
                 for (var j = 0; j < BOARD_SIZE; j++) {
                     allPositions.add(factory.fromRowAndColumn(i, j));
@@ -51,10 +51,10 @@ class LogicsTest {
 
     static class BasicLogicTest {
 
-        private static final PiecePositionFactory factory = new PiecePositionFactoryImpl();
-        private static final PiecePosition KNIGHT_POSITION = factory.fromRowAndColumn(0, 0);
-        private static final PiecePosition PAWN_POSITION = factory.fromRowAndColumn(1, 2);
-        private static final PiecePosition EMPTY_POSITION = factory.fromRowAndColumn(1,1);
+        private static final PositionFactory factory = new PositionFactoryImpl();
+        private static final Position KNIGHT_POSITION = factory.fromRowAndColumn(0, 0);
+        private static final Position PAWN_POSITION = factory.fromRowAndColumn(1, 2);
+        private static final Position EMPTY_POSITION = factory.fromRowAndColumn(1,1);
 
         @BeforeEach
         void setUp() {

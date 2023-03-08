@@ -1,12 +1,12 @@
 package e1.logic.position;
 
-public interface PiecePositionFactory {
+public interface PositionFactory {
 
     /**
      *
      * @return a new Random Position
      */
-    PiecePosition randomPositionWithBound(int bound);
+    Position randomPositionWithBound(int bound);
 
     /**
      *
@@ -14,5 +14,5 @@ public interface PiecePositionFactory {
      * @param column for the position
      * @return the position with row and column
      */
-    PiecePosition fromRowAndColumn(int row, int column);
+    Position fromRowAndColumn(int row, int column);
 }

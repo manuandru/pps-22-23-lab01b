@@ -3,24 +3,24 @@ package e1.logic.position;
 import java.util.Objects;
 import java.util.Random;
 
-public class PiecePositionFactoryImpl implements PiecePositionFactory {
+public class PositionFactoryImpl implements PositionFactory {
     private final Random random = new Random();
 
     @Override
-    public PiecePosition randomPositionWithBound(int bound) {
-        return new SimplePiecePosition(this.random.nextInt(bound), this.random.nextInt(bound));
+    public Position randomPositionWithBound(int bound) {
+        return new SimplePosition(this.random.nextInt(bound), this.random.nextInt(bound));
     }
 
     @Override
-    public PiecePosition fromRowAndColumn(int row, int column) {
-        return new SimplePiecePosition(row, column);
+    public Position fromRowAndColumn(int row, int column) {
+        return new SimplePosition(row, column);
     }
 
-    private static class SimplePiecePosition implements PiecePosition {
+    private static class SimplePosition implements Position {
         private final int row;
         private final int column;
 
-        SimplePiecePosition(int row, int column) {
+        SimplePosition(int row, int column) {
             this.row = row;
             this.column = column;
         }
@@ -38,7 +38,7 @@ public class PiecePositionFactoryImpl implements PiecePositionFactory {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-            SimplePiecePosition that = (SimplePiecePosition) o;
+            SimplePosition that = (SimplePosition) o;
             return row == that.row && column == that.column;
         }
 

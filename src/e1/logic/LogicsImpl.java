@@ -1,17 +1,17 @@
 package e1.logic;
 
-import e1.logic.position.PiecePosition;
-import e1.logic.position.PiecePositionFactory;
-import e1.logic.position.PiecePositionFactoryImpl;
+import e1.logic.position.Position;
+import e1.logic.position.PositionFactory;
+import e1.logic.position.PositionFactoryImpl;
 
 public class LogicsImpl implements Logics {
 
-	private final PiecePositionFactory positionFactory = new PiecePositionFactoryImpl();
-	private final PiecePosition pawn;
-	private PiecePosition knight;
+	private final PositionFactory positionFactory = new PositionFactoryImpl();
+	private final Position pawn;
+	private Position knight;
 	private final int size;
 
-	public LogicsImpl(PiecePosition pawn, PiecePosition knight, int size) {
+	public LogicsImpl(Position pawn, Position knight, int size) {
 		this.size = size;
 		this.pawn = pawn;
 		this.knight = knight;
@@ -23,8 +23,8 @@ public class LogicsImpl implements Logics {
         this.knight = this.randomEmptyPosition();	
     }
     
-	private final PiecePosition randomEmptyPosition() {
-		PiecePosition pos = positionFactory.randomPositionWithBound(size);
+	private final Position randomEmptyPosition() {
+		Position pos = positionFactory.randomPositionWithBound(size);
     	// the recursive call below prevents clash with an existing pawn
     	return this.pawn!=null && this.pawn.equals(pos) ? randomEmptyPosition() : pos;
     }

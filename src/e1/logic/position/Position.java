@@ -1,6 +1,9 @@
 package e1.logic.position;
 
-public interface PiecePosition {
+/**
+ * Position of a piece over a board.
+ */
+public interface Position {
 
     /**
      *
