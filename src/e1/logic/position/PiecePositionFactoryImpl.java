@@ -1,4 +1,4 @@
-package e1;
+package e1.logic.position;
 
 import java.util.Objects;
 import java.util.Random;

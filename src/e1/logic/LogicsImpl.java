@@ -1,6 +1,8 @@
-package e1;
+package e1.logic;
 
-import java.util.*;
+import e1.logic.position.PiecePosition;
+import e1.logic.position.PiecePositionFactory;
+import e1.logic.position.PiecePositionFactoryImpl;
 
 public class LogicsImpl implements Logics {
 

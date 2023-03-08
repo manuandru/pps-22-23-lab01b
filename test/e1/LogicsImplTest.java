@@ -1,5 +1,10 @@
 package e1;
 
+import e1.logic.Logics;
+import e1.logic.LogicsImpl;
+import e1.logic.position.PiecePosition;
+import e1.logic.position.PiecePositionFactory;
+import e1.logic.position.PiecePositionFactoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -30,14 +35,15 @@ class LogicsTest {
         }
 
         private long countNumberOf(BiFunction<Integer, Integer, Boolean> chessType) {
-            List<Pair<Integer, Integer>> allPositions = new ArrayList<>();
+            PiecePositionFactory factory = new PiecePositionFactoryImpl();
+            List<PiecePosition> allPositions = new ArrayList<>();
             for (var i = 0; i < BOARD_SIZE; i++) {
                 for (var j = 0; j < BOARD_SIZE; j++) {
-                    allPositions.add(new Pair<>(i, j));
+                    allPositions.add(factory.fromRowAndColumn(i, j));
                 }
             }
             return allPositions.stream()
-                    .map(p -> chessType.apply(p.getX(), p.getY()))
+                    .map(p -> chessType.apply(p.getRow(), p.getColumn()))
                     .filter(Boolean::booleanValue)
                     .count();
         }
