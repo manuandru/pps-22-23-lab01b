@@ -61,5 +61,12 @@ abstract class PieceTest {
             piece.moveTo(newLegalPosition);
             assertEquals(newLegalPosition, piece.getPosition());
         }
+
+        @Test
+        void testKnightBadMove() {
+            var newIllegalPosition = positionFactory.fromRowAndColumn(1,1);
+            piece.moveTo(newIllegalPosition);
+            assertEquals(INITIAL_POSITION, piece.getPosition());
+        }
     }
 }
