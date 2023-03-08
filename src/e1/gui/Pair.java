@@ -1,4 +1,4 @@
-package e1;
+package e1.gui;
 
 /*
  * A standard generic Pair<X,Y>, with getters, hashCode, equals, and toString well implemented. 

@@ -1,9 +1,8 @@
-package e1.logic.piece;
+package e1.logic.piece.factory;
 
+import e1.logic.piece.Piece;
+import e1.logic.piece.PieceImpl;
 import e1.logic.position.Position;
-import e1.logic.position.PositionFactoryImpl;
-
-import java.util.Optional;
 
 public class PieceFactoryWithPositionImpl implements PieceFactoryWithPosition {
 
@@ -15,7 +14,7 @@ public class PieceFactoryWithPositionImpl implements PieceFactoryWithPosition {
 
     @Override
     public Piece getPawn() {
-        return new PieceImpl(position, (from,to) -> false);
+        return new PieceImpl(position, (from, to) -> false);
     }
 
     @Override

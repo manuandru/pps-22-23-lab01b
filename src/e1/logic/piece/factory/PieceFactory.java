@@ -1,4 +1,4 @@
-package e1.logic.piece;
+package e1.logic.piece.factory;
 
 import e1.logic.position.Position;
 

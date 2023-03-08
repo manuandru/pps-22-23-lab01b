@@ -1,5 +1,7 @@
 package e1.logic.piece;
 
+import e1.logic.piece.factory.PieceFactory;
+import e1.logic.piece.factory.PieceFactoryImpl;
 import e1.logic.position.Position;
 import e1.logic.position.PositionFactory;
 import e1.logic.position.PositionFactoryImpl;

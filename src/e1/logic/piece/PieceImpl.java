@@ -7,7 +7,7 @@ public class PieceImpl implements Piece {
     private Position position;
     private final MovementStrategy strategy;
 
-    PieceImpl(Position position, MovementStrategy strategy) {
+    public PieceImpl(Position position, MovementStrategy strategy) {
         this.position = position;
         this.strategy = strategy;
     }
