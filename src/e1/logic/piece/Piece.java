@@ -7,7 +7,7 @@ import java.util.Optional;
 /**
  * A Piece for chess.
  */
-interface Piece {
+public interface Piece {
 
     /**
      *
