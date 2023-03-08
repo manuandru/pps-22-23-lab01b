@@ -13,11 +13,11 @@ interface Piece {
      *
      * @return the position of the piece
      */
-    Optional<Position> getPosition();
+    Position getPosition();
 
     /**
      *
      * @param position to set.
      */
-    void setPosition(Position position);
+    void moveTo(Position position);
 }

@@ -1,16 +1,15 @@
 package e1.logic.piece;
 
+import e1.logic.position.Position;
+
+/**
+ * StepBuilder interface.
+ */
 public interface PieceFactory {
 
     /**
      *
-     * @return a Pawn.
+     * @return a factory of Piece with position set.
      */
-    Piece getPawn();
-
-    /**
-     *
-     * @return a Knight.
-     */
-    Piece getKnight();
+    PieceFactoryWithPosition withPosition(Position position);
 }
