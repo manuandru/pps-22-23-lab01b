@@ -45,9 +45,10 @@ class LogicsTest {
 
     static class BasicLogicTest {
 
-
-        public static final Pair<Integer, Integer> KNIGHT_POSITION = new Pair<>(0, 0);
-        public static final Pair<Integer, Integer> PAWN_POSITION = new Pair<>(1, 2);
+        private static final PiecePositionFactory factory = new PiecePositionFactoryImpl();
+        private static final PiecePosition KNIGHT_POSITION = factory.fromRowAndColumn(0, 0);
+        private static final PiecePosition PAWN_POSITION = factory.fromRowAndColumn(1, 2);
+        private static final PiecePosition EMPTY_POSITION = factory.fromRowAndColumn(1,1);
 
         @BeforeEach
         void setUp() {
@@ -56,34 +57,33 @@ class LogicsTest {
 
         @Test
         void testPawnCorrectlyAdded() {
-            assertTrue(logic.hasPawn(PAWN_POSITION.getX(), PAWN_POSITION.getY()));
-            assertFalse(logic.hasPawn(KNIGHT_POSITION.getX(), KNIGHT_POSITION.getY()));
+            assertTrue(logic.hasPawn(PAWN_POSITION.getRow(), PAWN_POSITION.getColumn()));
+            assertFalse(logic.hasPawn(EMPTY_POSITION.getRow(), EMPTY_POSITION.getColumn()));
         }
 
         @Test
         void testKnightCorrectlyAdded() {
-            assertTrue(logic.hasKnight(KNIGHT_POSITION.getX(), KNIGHT_POSITION.getY()));
-            assertFalse(logic.hasKnight(PAWN_POSITION.getX(), PAWN_POSITION.getY()));
+            assertTrue(logic.hasKnight(KNIGHT_POSITION.getRow(), KNIGHT_POSITION.getColumn()));
+            assertFalse(logic.hasKnight(EMPTY_POSITION.getRow(), EMPTY_POSITION.getColumn()));
         }
 
         @Test
         void testKnightCannotMoveOutOfBoard() {
-            var illegalPosition = new Pair<>(-1, -1);
+            var illegalPosition = factory.fromRowAndColumn(-1, -1);
             assertThrows(
                     IndexOutOfBoundsException.class,
-                    () -> logic.hit(illegalPosition.getX(), illegalPosition.getY())
+                    () -> logic.hit(illegalPosition.getRow(), illegalPosition.getColumn())
             );
         }
 
         @Test
-        void testKnightDoNotHitPawn() {
-            var emptyPosition = new Pair<>(0, 1);
-            assertFalse(logic.hit(emptyPosition.getX(), emptyPosition.getY()));
+        void testKnightDoesNotHitPawn() {
+            assertFalse(logic.hit(EMPTY_POSITION.getRow(), EMPTY_POSITION.getColumn()));
         }
 
         @Test
         void testKnightHitPawn() {
-            assertTrue(logic.hit(PAWN_POSITION.getX(), PAWN_POSITION.getY()));
+            assertTrue(logic.hit(PAWN_POSITION.getRow(), PAWN_POSITION.getColumn()));
         }
     }
 }

@@ -3,13 +3,13 @@ package e1;
 import java.util.*;
 
 public class LogicsImpl implements Logics {
-	
-	private final Pair<Integer,Integer> pawn;
-	private Pair<Integer,Integer> knight;
-	private final Random random = new Random();
+
+	private final PiecePositionFactory positionFactory = new PiecePositionFactoryImpl();
+	private final PiecePosition pawn;
+	private PiecePosition knight;
 	private final int size;
 
-	public LogicsImpl(Pair<Integer, Integer> pawn, Pair<Integer, Integer> knight, int size) {
+	public LogicsImpl(PiecePosition pawn, PiecePosition knight, int size) {
 		this.size = size;
 		this.pawn = pawn;
 		this.knight = knight;
@@ -21,8 +21,8 @@ public class LogicsImpl implements Logics {
         this.knight = this.randomEmptyPosition();	
     }
     
-	private final Pair<Integer,Integer> randomEmptyPosition(){
-    	Pair<Integer,Integer> pos = new Pair<>(this.random.nextInt(size),this.random.nextInt(size));
+	private final PiecePosition randomEmptyPosition() {
+		PiecePosition pos = positionFactory.randomPositionWithBound(size);
     	// the recursive call below prevents clash with an existing pawn
     	return this.pawn!=null && this.pawn.equals(pos) ? randomEmptyPosition() : pos;
     }
@@ -33,10 +33,10 @@ public class LogicsImpl implements Logics {
 			throw new IndexOutOfBoundsException();
 		}
 		// Below a compact way to express allowed moves for the knight
-		int x = row-this.knight.getX();
-		int y = col-this.knight.getY();
+		int x = row-this.knight.getRow();
+		int y = col-this.knight.getColumn();
 		if (x!=0 && y!=0 && Math.abs(x)+Math.abs(y)==3) {
-			this.knight = new Pair<>(row,col);
+			this.knight = positionFactory.fromRowAndColumn(row, col);
 			return this.pawn.equals(this.knight);
 		}
 		return false;
@@ -44,11 +44,11 @@ public class LogicsImpl implements Logics {
 
 	@Override
 	public boolean hasKnight(int row, int col) {
-		return this.knight.equals(new Pair<>(row,col));
+		return this.knight.equals(positionFactory.fromRowAndColumn(row, col));
 	}
 
 	@Override
 	public boolean hasPawn(int row, int col) {
-		return this.pawn.equals(new Pair<>(row,col));
+		return this.pawn.equals(positionFactory.fromRowAndColumn(row, col));
 	}
 }
