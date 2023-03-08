@@ -33,12 +33,20 @@ abstract class PieceTest {
     }
 
     static class PawnTest extends PieceTest {
-
         @Override
         @BeforeEach
         void setUp() {
             super.setUp();
             piece = pieceFactory.getPawn();
+        }
+    }
+
+    static class KnightTest extends PieceTest {
+        @Override
+        @BeforeEach
+        void setUp() {
+            super.setUp();
+            piece = pieceFactory.getKnight();
         }
     }
 }
