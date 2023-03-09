@@ -1,4 +1,4 @@
-package e1.logic.piece;
+package e1.logic;
 
 import e1.logic.Logics;
 import e1.logic.LogicsImpl;
