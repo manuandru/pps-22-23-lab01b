@@ -1,9 +1,9 @@
 package e1.logic.piece.factory;
 
-import e1.logic.position.Position;
+import e1.logic.piece.position.Position;
 
 /**
- * StepBuilder interface.
+ * Entry Point for PieceFactory.
  */
 public interface PieceFactory {
 

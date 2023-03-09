@@ -2,9 +2,9 @@ package e1;
 
 import e1.logic.Logics;
 import e1.logic.LogicsImpl;
-import e1.logic.position.Position;
-import e1.logic.position.PositionFactory;
-import e1.logic.position.PositionFactoryImpl;
+import e1.logic.piece.position.Position;
+import e1.logic.piece.position.PositionFactory;
+import e1.logic.piece.position.PositionFactoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

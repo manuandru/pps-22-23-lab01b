@@ -3,9 +3,9 @@ package e1.logic;
 import e1.logic.piece.Piece;
 import e1.logic.piece.factory.PieceFactoryImpl;
 import e1.logic.piece.factory.PieceFactoryWithPositionImpl;
-import e1.logic.position.Position;
-import e1.logic.position.PositionFactory;
-import e1.logic.position.PositionFactoryImpl;
+import e1.logic.piece.position.Position;
+import e1.logic.piece.position.PositionFactory;
+import e1.logic.piece.position.PositionFactoryImpl;
 
 public class LogicsImpl implements Logics {
 

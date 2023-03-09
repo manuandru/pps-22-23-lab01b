@@ -1,4 +1,4 @@
-package e1.logic.position;
+package e1.logic.piece.position;
 
 import java.util.Objects;
 import java.util.Random;

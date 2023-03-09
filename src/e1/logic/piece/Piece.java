@@ -1,6 +1,6 @@
 package e1.logic.piece;
 
-import e1.logic.position.Position;
+import e1.logic.piece.position.Position;
 
 /**
  * A Piece for chess.

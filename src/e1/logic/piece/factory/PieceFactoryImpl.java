@@ -1,6 +1,6 @@
 package e1.logic.piece.factory;
 
-import e1.logic.position.Position;
+import e1.logic.piece.position.Position;
 
 public class PieceFactoryImpl implements PieceFactory {
     @Override

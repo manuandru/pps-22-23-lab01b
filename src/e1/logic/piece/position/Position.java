@@ -1,4 +1,4 @@
-package e1.logic.position;
+package e1.logic.piece.position;
 
 /**
  * Position of a piece over a board.
