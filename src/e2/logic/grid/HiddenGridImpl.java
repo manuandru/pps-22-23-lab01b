@@ -11,7 +11,7 @@ public class HiddenGridImpl implements HiddenGrid {
     private final Grid grid;
     private final Set<Cell> hiddenCells = new HashSet<>();
 
-    HiddenGridImpl(Grid grid) {
+    public HiddenGridImpl(Grid grid) {
         this.grid = grid;
     }
     @Override
