@@ -1,6 +1,7 @@
 package e2.logic;
 
 import e2.gui.RenderStatus;
+import e2.logic.grid.cell.Cell;
 import e2.logic.grid.cell.CellImpl;
 import e2.logic.grid.cell.CellState;
 import e2.logic.grid.GridImpl;
@@ -17,7 +18,9 @@ public class LogicsImpl implements Logics {
 
     @Override
     public boolean checkIfContainsBomb(int x, int y) {
-        return gridWithHidden.getCellContent(new CellImpl(x, y)).equals(CellState.BOMB);
+        Cell target = new CellImpl(x, y);
+        gridWithHidden.reveal(target);
+        return gridWithHidden.getCellContent(target).equals(CellState.BOMB);
     }
 
     @Override
