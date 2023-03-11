@@ -10,5 +10,8 @@ public interface Logics {
 
     void revealAllBombs();
 
+    void revealAll();
+
     void changeFlag(int x, int y);
+
 }

@@ -12,4 +12,6 @@ public interface OverlapGrid extends Grid {
     void revealAllBombs();
 
     void changeFlag(Cell cell);
+
+    void revealAll();
 }

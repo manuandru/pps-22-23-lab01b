@@ -39,6 +39,11 @@ public class LogicsImpl implements Logics {
     }
 
     @Override
+    public void revealAll() {
+        this.grid.revealAll();
+    }
+
+    @Override
     public void changeFlag(int x, int y) {
         this.grid.changeFlag(new CellImpl(x, y));
     }

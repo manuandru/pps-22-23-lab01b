@@ -51,4 +51,9 @@ public class OverlapGridImpl implements OverlapGrid {
             this.flaggedCells.add(cell);
         }
     }
+
+    @Override
+    public void revealAll() {
+        this.grid.getAllCells().forEach(this::reveal);
+    }
 }
