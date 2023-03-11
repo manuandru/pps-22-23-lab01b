@@ -35,7 +35,7 @@ public class GridImpl implements Grid {
     }
 
     @Override
-    public boolean isBomb(int x, int y) {
-        return grid.get(new CellImpl(x,y)).equals(CellState.BOMB);
+    public CellState getCellContent(Cell cell) {
+        return grid.get(cell);
     }
 }

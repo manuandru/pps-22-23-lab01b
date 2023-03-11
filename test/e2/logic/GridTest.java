@@ -1,11 +1,11 @@
 package e2.logic;
 
-import e2.gui.Pair;
+import e2.logic.cell.Cell;
+import e2.logic.cell.CellImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,15 +21,15 @@ class GridTest {
 
     @Test
     void testBombsArePut() {
-        var allPositions = new ArrayList<Pair<Integer, Integer>>();
+        var allPositions = new ArrayList<Cell>();
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
-                allPositions.add(new Pair<>(i, j));
+                allPositions.add(new CellImpl(i,j));
             }
         }
         var countOfBomb = allPositions.stream()
-                .map(p -> grid.isBomb(p.getX(), p.getY()))
-                .filter(Boolean::booleanValue)
+                .map(c -> grid.getCellContent(c))
+                .filter(CellState.BOMB::equals)
                 .count();
         assertEquals(BOMB_COUNT, countOfBomb);
     }

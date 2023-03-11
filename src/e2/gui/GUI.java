@@ -2,7 +2,6 @@ package e2.gui;
 
 import e2.logic.Logics;
 import e2.logic.LogicsImpl;
-import e2.logic.RenderState;
 
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
@@ -30,7 +29,7 @@ public class GUI extends JFrame {
         ActionListener onClick = (e)->{
             final JButton bt = (JButton)e.getSource();
             final Pair<Integer,Integer> pos = buttons.get(bt);
-            boolean aMineWasFound = logics.isBomb(pos.getX(), pos.getY()); // call the logic here to tell it that cell at 'pos' has been seleced
+            boolean aMineWasFound = logics.checkIfContainsBomb(pos.getX(), pos.getY()); // call the logic here to tell it that cell at 'pos' has been seleced
             if (aMineWasFound) {
                 quitGame();
                 JOptionPane.showMessageDialog(this, "You lost!!");
