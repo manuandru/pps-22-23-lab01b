@@ -32,6 +32,11 @@ public class OverlapGridImpl implements OverlapGrid {
     }
 
     @Override
+    public int countOfAdjacentBombs(Cell cell) {
+        return this.grid.countOfAdjacentBombs(cell);
+    }
+
+    @Override
     public void reveal(Cell cell) {
         this.revealedCells.add(cell);
     }

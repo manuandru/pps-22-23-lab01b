@@ -24,10 +24,10 @@ public class LogicsImpl implements Logics {
 
     @Override
     public RenderStatus getStatus(int row, int column) {
-        var content = this.grid.getCellContent(new CellImpl(row, column));
-        return switch (content) {
+        var cell = new CellImpl(row, column);
+        return switch (this.grid.getCellContent(cell)) {
             case BOMB -> RenderStatus.BOMB;
-            case EMPTY -> RenderStatus.COUNTER.setCounter(0);
+            case EMPTY -> RenderStatus.COUNTER.setCounter(this.grid.countOfAdjacentBombs(cell));
             case HIDDEN -> RenderStatus.HIDDEN;
             case FLAG -> RenderStatus.FLAG;
         };

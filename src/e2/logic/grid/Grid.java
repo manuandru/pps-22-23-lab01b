@@ -22,4 +22,11 @@ public interface Grid {
      * @return all cells of the grid.
      */
     Set<Cell> getAllCells();
+
+    /**
+     *
+     * @param cell to check the adjacency.
+     * @return the number of bombs adjacent to the cell.
+     */
+    int countOfAdjacentBombs(Cell cell);
 }

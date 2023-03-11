@@ -2,11 +2,13 @@ package e2.logic;
 
 import e2.gui.Pair;
 import e2.gui.RenderStatus;
+import e2.logic.grid.cell.CellImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -67,6 +69,25 @@ class LogicsTest {
         assertEquals(RenderStatus.FLAG, logics.getStatus(xToFlag, yToFlag));
         logics.changeFlag(xToFlag, yToFlag);
         assertEquals(RenderStatus.HIDDEN, logics.getStatus(xToFlag, yToFlag));
+    }
+
+    @Test
+    void testCounterAdjacentGreaterThatZero() {
+        logics.revealAll();
+        var bombPosition = getAllPositions().stream()
+                .filter(p -> logics.getStatus(p.getX(), p.getY()).equals(RenderStatus.BOMB))
+                .findFirst().orElseThrow();
+        var bombCell = new CellImpl(bombPosition.getX(), bombPosition.getY());
+        var adjCellToBomb = getAllPositions().stream()
+                .filter(p -> !logics.getStatus(p.getX(), p.getY()).equals(RenderStatus.BOMB))
+                .map(p -> new CellImpl(p.getX(), p.getY()))
+                .filter(bombCell::isAdjacencyTo)
+                .findFirst().orElseThrow();
+        var zeroBombsAdj = 0;
+        assertNotEquals(
+                zeroBombsAdj,
+                logics.getStatus(adjCellToBomb.getRow(), adjCellToBomb.getColumn()).getCounter()
+        );
     }
 
     private List<Pair<Integer, Integer>> getAllPositions() {

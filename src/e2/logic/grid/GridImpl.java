@@ -11,15 +11,15 @@ public class GridImpl implements Grid {
     private final Map<Cell, CellState> grid = new HashMap<>();
     private final int gridSize;
     public GridImpl(int size, int bombCount) {
-        gridSize = size;
+        this.gridSize = size;
         Set<Integer> bombsPosition = getRandomBombsPosition(bombCount);
         int bombCounter = 0;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (bombsPosition.contains(bombCounter)) {
-                    grid.put(new CellImpl(i,j), CellState.BOMB);
+                    this.grid.put(new CellImpl(i,j), CellState.BOMB);
                 } else {
-                    grid.put(new CellImpl(i,j), CellState.EMPTY);
+                    this.grid.put(new CellImpl(i,j), CellState.EMPTY);
                 }
                 bombCounter++;
             }
@@ -37,11 +37,20 @@ public class GridImpl implements Grid {
 
     @Override
     public CellState getCellContent(Cell cell) {
-        return grid.get(cell);
+        return this.grid.get(cell);
     }
 
     @Override
     public Set<Cell> getAllCells() {
         return this.grid.keySet();
+    }
+
+    @Override
+    public int countOfAdjacentBombs(Cell cell) {
+        return (int) this.getAllCells().stream()
+                .filter(cell::isAdjacencyTo)
+                .map(grid::get)
+                .filter(CellState.BOMB::equals)
+                .count();
     }
 }
