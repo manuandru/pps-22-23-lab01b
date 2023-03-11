@@ -28,6 +28,7 @@ public class GUI extends JFrame {
         
         ActionListener onClick = (e)->{
             final JButton bt = (JButton)e.getSource();
+            bt.setEnabled(false);
             final Pair<Integer,Integer> pos = buttons.get(bt);
             boolean aMineWasFound = logics.checkIfContainsBomb(pos.getX(), pos.getY()); // call the logic here to tell it that cell at 'pos' has been seleced
             if (aMineWasFound) {

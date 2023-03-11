@@ -1,5 +1,7 @@
 package e2.logic.cell;
 
+import e2.logic.grid.cell.Cell;
+import e2.logic.grid.cell.CellImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

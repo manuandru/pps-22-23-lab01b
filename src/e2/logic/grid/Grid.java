@@ -1,6 +1,7 @@
-package e2.logic;
+package e2.logic.grid;
 
-import e2.logic.cell.Cell;
+import e2.logic.grid.cell.Cell;
+import e2.logic.grid.cell.CellState;
 
 /**
  * Grid of cell that can contains bomb or not.

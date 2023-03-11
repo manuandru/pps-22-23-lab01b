@@ -1,7 +1,10 @@
 package e2.logic;
 
-import e2.logic.cell.Cell;
-import e2.logic.cell.CellImpl;
+import e2.logic.grid.cell.Cell;
+import e2.logic.grid.cell.CellImpl;
+import e2.logic.grid.cell.CellState;
+import e2.logic.grid.Grid;
+import e2.logic.grid.GridImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

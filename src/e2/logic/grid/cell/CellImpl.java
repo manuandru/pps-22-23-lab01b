@@ -1,4 +1,4 @@
-package e2.logic.cell;
+package e2.logic.grid.cell;
 
 import java.util.Objects;
 

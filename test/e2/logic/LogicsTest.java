@@ -1,6 +1,7 @@
 package e2.logic;
 
 import e2.gui.Pair;
+import e2.gui.RenderStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +28,14 @@ class LogicsTest {
                     logics.getStatus(p.getX(), p.getY())
             );
         });
+    }
+
+    @Test
+    void testCellCanBeRevealed() {
+        int xToReveal = 0;
+        int yToReveal = 0;
+        logics.checkIfContainsBomb(xToReveal, yToReveal);
+
     }
 
     private List<Pair<Integer, Integer>> getAllPositions() {

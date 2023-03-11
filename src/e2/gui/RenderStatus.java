@@ -1,4 +1,4 @@
-package e2.logic;
+package e2.gui;
 
 public enum RenderStatus {
     BOMB, COUNTER, FLAG, HIDDEN;

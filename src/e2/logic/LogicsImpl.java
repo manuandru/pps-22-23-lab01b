@@ -1,6 +1,11 @@
 package e2.logic;
 
-import e2.logic.cell.CellImpl;
+import e2.gui.RenderStatus;
+import e2.logic.grid.cell.CellImpl;
+import e2.logic.grid.cell.CellState;
+import e2.logic.grid.GridImpl;
+import e2.logic.grid.HiddenGrid;
+import e2.logic.grid.HiddenGridImpl;
 
 public class LogicsImpl implements Logics {
 
