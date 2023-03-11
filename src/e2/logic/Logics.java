@@ -4,14 +4,37 @@ import e2.gui.RenderStatus;
 
 public interface Logics {
 
-    boolean checkIfContainsBomb(int x, int y);
+    /**
+     *
+     * @param row of the cell to check.
+     * @param column of the cell to check.
+     * @return true if a bomb is present.
+     */
+    boolean checkIfContainsBomb(int row, int column);
 
-    RenderStatus getStatus(int x, int y);
+    /**
+     *
+     * @param row of the cell to get Content.
+     * @param column of the cell get Content.
+     * @return
+     */
+    RenderStatus getStatus(int row, int column);
 
+    /**
+     * Reveal all bombs.
+     */
     void revealAllBombs();
 
+    /**
+     * Reveal all cells.
+     */
     void revealAll();
 
-    void changeFlag(int x, int y);
+    /**
+     *
+     * @param row of the cell to change flag status.
+     * @param column of the cell to change flag status.
+     */
+    void changeFlag(int row, int column);
 
 }

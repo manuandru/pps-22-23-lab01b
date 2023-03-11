@@ -16,15 +16,15 @@ public class LogicsImpl implements Logics {
     }
 
     @Override
-    public boolean checkIfContainsBomb(int x, int y) {
-        Cell target = new CellImpl(x, y);
+    public boolean checkIfContainsBomb(int row, int column) {
+        Cell target = new CellImpl(row, column);
         this.grid.reveal(target);
         return this.grid.getCellContent(target).equals(CellState.BOMB);
     }
 
     @Override
-    public RenderStatus getStatus(int x, int y) {
-        var content = this.grid.getCellContent(new CellImpl(x, y));
+    public RenderStatus getStatus(int row, int column) {
+        var content = this.grid.getCellContent(new CellImpl(row, column));
         return switch (content) {
             case BOMB -> RenderStatus.BOMB;
             case EMPTY -> RenderStatus.COUNTER.setCounter(0);
@@ -44,7 +44,7 @@ public class LogicsImpl implements Logics {
     }
 
     @Override
-    public void changeFlag(int x, int y) {
-        this.grid.changeFlag(new CellImpl(x, y));
+    public void changeFlag(int row, int column) {
+        this.grid.changeFlag(new CellImpl(row, column));
     }
 }

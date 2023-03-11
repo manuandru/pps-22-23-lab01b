@@ -44,6 +44,11 @@ public class OverlapGridImpl implements OverlapGrid {
     }
 
     @Override
+    public void revealAll() {
+        this.grid.getAllCells().forEach(this::reveal);
+    }
+
+    @Override
     public void changeFlag(Cell cell) {
         if (this.flaggedCells.contains(cell)) {
             this.flaggedCells.remove(cell);
@@ -52,8 +57,4 @@ public class OverlapGridImpl implements OverlapGrid {
         }
     }
 
-    @Override
-    public void revealAll() {
-        this.grid.getAllCells().forEach(this::reveal);
-    }
 }
