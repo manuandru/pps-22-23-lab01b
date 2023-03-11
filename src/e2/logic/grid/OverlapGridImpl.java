@@ -6,21 +6,24 @@ import e2.logic.grid.cell.CellState;
 import java.util.HashSet;
 import java.util.Set;
 
-public class HiddenGridImpl implements HiddenGrid {
+public class OverlapGridImpl implements OverlapGrid {
 
     private final Grid grid;
-    private final Set<Cell> hiddenCells = new HashSet<>();
+    private final Set<Cell> revealedCells = new HashSet<>();
+    private final Set<Cell> flaggedCells = new HashSet<>();
 
-    public HiddenGridImpl(Grid grid) {
+    public OverlapGridImpl(Grid grid) {
         this.grid = grid;
     }
     @Override
     public CellState getCellContent(Cell cell) {
-        if (hiddenCells.contains(cell)) {
+        if (this.revealedCells.contains(cell)) {
             return this.grid.getCellContent(cell);
-        } else {
-            return CellState.HIDDEN;
         }
+        if (this.flaggedCells.contains(cell)) {
+            return CellState.FLAG;
+        }
+        return CellState.HIDDEN;
     }
 
     @Override
@@ -30,7 +33,7 @@ public class HiddenGridImpl implements HiddenGrid {
 
     @Override
     public void reveal(Cell cell) {
-        this.hiddenCells.add(cell);
+        this.revealedCells.add(cell);
     }
 
     @Override
@@ -38,5 +41,14 @@ public class HiddenGridImpl implements HiddenGrid {
         this.grid.getAllCells().stream()
                 .filter(cell -> this.grid.getCellContent(cell).equals(CellState.BOMB))
                 .forEach(this::reveal);
+    }
+
+    @Override
+    public void changeFlag(Cell cell) {
+        if (this.flaggedCells.contains(cell)) {
+            this.flaggedCells.remove(cell);
+        } else {
+            this.flaggedCells.add(cell);
+        }
     }
 }

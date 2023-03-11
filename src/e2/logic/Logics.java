@@ -9,4 +9,6 @@ public interface Logics {
     RenderStatus getStatus(int x, int y);
 
     void revealAllBombs();
+
+    void changeFlag(int x, int y);
 }

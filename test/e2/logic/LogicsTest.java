@@ -59,6 +59,16 @@ class LogicsTest {
         assertEquals(expected, countOfHidden);
     }
 
+    @Test
+    void testFlagCanBePutAndRemove() {
+        var xToFlag = 0;
+        var yToFlag = 0;
+        logics.changeFlag(xToFlag, yToFlag);
+        assertEquals(RenderStatus.FLAG, logics.getStatus(xToFlag, yToFlag));
+        logics.changeFlag(xToFlag, yToFlag);
+        assertEquals(RenderStatus.HIDDEN, logics.getStatus(xToFlag, yToFlag));
+    }
+
     private List<Pair<Integer, Integer>> getAllPositions() {
         var allPositions = new ArrayList<Pair<Integer, Integer>>();
         for (int i = 0; i < BOARD_SIZE; i++) {
