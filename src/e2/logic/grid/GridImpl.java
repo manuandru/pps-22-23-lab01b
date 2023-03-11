@@ -39,4 +39,9 @@ public class GridImpl implements Grid {
     public CellState getCellContent(Cell cell) {
         return grid.get(cell);
     }
+
+    @Override
+    public Set<Cell> getAllCells() {
+        return this.grid.keySet();
+    }
 }

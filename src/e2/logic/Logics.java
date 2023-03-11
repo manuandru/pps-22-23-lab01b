@@ -7,4 +7,6 @@ public interface Logics {
     boolean checkIfContainsBomb(int x, int y);
 
     RenderStatus getStatus(int x, int y);
+
+    void revealAllBombs();
 }

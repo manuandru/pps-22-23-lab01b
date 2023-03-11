@@ -32,4 +32,9 @@ public class LogicsImpl implements Logics {
             case HIDDEN -> RenderStatus.HIDDEN;
         };
     }
+
+    @Override
+    public void revealAllBombs() {
+        gridWithHidden.revealAllBombs();
+    }
 }

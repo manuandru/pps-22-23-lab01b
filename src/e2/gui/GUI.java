@@ -71,11 +71,16 @@ public class GUI extends JFrame {
     }
     
     private void quitGame() {
+        logics.revealAllBombs();
         this.drawBoard();
     	for (var entry: this.buttons.entrySet()) {
             // call the logic here
             // if this button is a mine, draw it "*"
             // disable the button
+            var pair = entry.getValue();
+            if (this.logics.getStatus(pair.getX(), pair.getY()).equals(RenderStatus.BOMB)) {
+                entry.getKey().setEnabled(false);
+            }
     	}
     }
 

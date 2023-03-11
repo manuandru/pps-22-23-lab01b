@@ -8,4 +8,6 @@ import e2.logic.grid.cell.Cell;
 public interface HiddenGrid extends Grid {
 
     void reveal(Cell cell);
+
+    void revealAllBombs();
 }

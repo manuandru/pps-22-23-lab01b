@@ -35,7 +35,28 @@ class LogicsTest {
         int xToReveal = 0;
         int yToReveal = 0;
         logics.checkIfContainsBomb(xToReveal, yToReveal);
+        assertNotEquals(RenderStatus.HIDDEN, logics.getStatus(xToReveal, yToReveal));
+    }
 
+    @Test
+    void testAllBombsAreRevealedOnLost() {
+        logics.revealAllBombs();
+        var countOfBombsRevealed = getAllPositions().stream()
+                .map(p -> logics.getStatus(p.getX(), p.getY()))
+                .filter(RenderStatus.BOMB::equals)
+                .count();
+        assertEquals(BOMBS_COUNT, countOfBombsRevealed);
+    }
+
+    @Test
+    void testOtherAreNotRevealedOnLost() {
+        logics.revealAllBombs();
+        var countOfHidden = getAllPositions().stream()
+                .map(p -> logics.getStatus(p.getX(), p.getY()))
+                .filter(RenderStatus.HIDDEN::equals)
+                .count();
+        var expected = BOARD_SIZE * BOARD_SIZE - BOMBS_COUNT;
+        assertEquals(expected, countOfHidden);
     }
 
     private List<Pair<Integer, Integer>> getAllPositions() {

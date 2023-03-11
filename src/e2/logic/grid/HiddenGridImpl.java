@@ -24,7 +24,19 @@ public class HiddenGridImpl implements HiddenGrid {
     }
 
     @Override
+    public Set<Cell> getAllCells() {
+        return this.grid.getAllCells();
+    }
+
+    @Override
     public void reveal(Cell cell) {
         this.hiddenCells.add(cell);
+    }
+
+    @Override
+    public void revealAllBombs() {
+        this.grid.getAllCells().stream()
+                .filter(cell -> this.grid.getCellContent(cell).equals(CellState.BOMB))
+                .forEach(this::reveal);
     }
 }
