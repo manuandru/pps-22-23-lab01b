@@ -7,5 +7,5 @@ import e2.logic.cell.Cell;
  */
 public interface HiddenGrid extends Grid {
 
-    CellState reveal(Cell cell);
+    void reveal(Cell cell);
 }

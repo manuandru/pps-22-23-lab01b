@@ -16,12 +16,12 @@ public class LogicsImpl implements Logics {
     }
 
     @Override
-    public RenderState getStatus(int x, int y) {
+    public RenderStatus getStatus(int x, int y) {
         var content = gridWithHidden.getCellContent(new CellImpl(x, y));
         return switch (content) {
-            case BOMB -> RenderState.BOMB;
-            case EMPTY -> RenderState.COUNTER.setCounter(0);
-            case HIDDEN -> RenderState.HIDDEN;
+            case BOMB -> RenderStatus.BOMB;
+            case EMPTY -> RenderStatus.COUNTER.setCounter(0);
+            case HIDDEN -> RenderStatus.HIDDEN;
         };
     }
 }

@@ -1,10 +1,10 @@
 package e2.logic;
 
-public enum RenderState {
+public enum RenderStatus {
     BOMB, COUNTER, FLAG, HIDDEN;
 
     private int counter;
-    public RenderState setCounter(int counter) {
+    public RenderStatus setCounter(int counter) {
         this.counter = counter;
         return this;
     }

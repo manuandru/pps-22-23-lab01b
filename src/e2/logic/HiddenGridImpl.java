@@ -23,8 +23,7 @@ public class HiddenGridImpl implements HiddenGrid {
     }
 
     @Override
-    public CellState reveal(Cell cell) {
+    public void reveal(Cell cell) {
         this.hiddenCells.add(cell);
-        return this.grid.getCellContent(cell);
     }
 }

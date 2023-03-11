@@ -23,7 +23,7 @@ class LogicsTest {
     void testInitiallyAllHidden() {
         getAllPositions().forEach(p -> {
             assertEquals(
-                    RenderState.HIDDEN,
+                    RenderStatus.HIDDEN,
                     logics.getStatus(p.getX(), p.getY())
             );
         });
