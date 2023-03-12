@@ -80,7 +80,7 @@ class LogicsTest {
         var adjCellToBomb = getAllPositions().stream()
                 .filter(p -> !logics.getStatus(p.getX(), p.getY()).equals(RenderStatus.BOMB))
                 .map(p -> new CellImpl(p.getX(), p.getY()))
-                .filter(bombCell::isAdjacencyTo)
+                .filter(bombCell::isAdjacentTo)
                 .findFirst().orElseThrow();
         var zeroBombsAdj = 0;
         assertNotEquals(

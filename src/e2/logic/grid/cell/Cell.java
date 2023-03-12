@@ -19,5 +19,5 @@ public interface Cell {
      * @param otherCell to check adjacency.
      * @return true if this cell is adjacent to otherCell.
      */
-    boolean isAdjacencyTo(Cell otherCell);
+    boolean isAdjacentTo(Cell otherCell);
 }

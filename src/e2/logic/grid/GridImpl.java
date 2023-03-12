@@ -48,7 +48,7 @@ public class GridImpl implements Grid {
     @Override
     public int countOfAdjacentBombs(Cell cell) {
         return (int) this.getAllCells().stream()
-                .filter(cell::isAdjacencyTo)
+                .filter(cell::isAdjacentTo)
                 .map(grid::get)
                 .filter(CellState.BOMB::equals)
                 .count();

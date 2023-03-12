@@ -22,7 +22,7 @@ public class CellImpl implements Cell {
     }
 
     @Override
-    public boolean isAdjacencyTo(Cell otherCell) {
+    public boolean isAdjacentTo(Cell otherCell) {
         int x = this.row - otherCell.getRow();
         int y = this.column - otherCell.getColumn();
         return Math.abs(x) <= 1 && Math.abs(y) <= 1;

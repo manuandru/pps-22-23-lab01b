@@ -26,12 +26,12 @@ class CellTest {
     @Test
     void testAdjacency() {
         var adjCell = new CellImpl(0, 0);
-        assertTrue(cell.isAdjacencyTo(adjCell));
+        assertTrue(cell.isAdjacentTo(adjCell));
     }
 
     @Test
     void testNotAdjacency() {
         var notAdjCell = new CellImpl(3, 3);
-        assertFalse(cell.isAdjacencyTo(notAdjCell));
+        assertFalse(cell.isAdjacentTo(notAdjCell));
     }
 }

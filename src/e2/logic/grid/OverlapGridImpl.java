@@ -41,7 +41,7 @@ public class OverlapGridImpl implements OverlapGrid {
         this.revealedCells.add(cell);
         if (this.countOfAdjacentBombs(cell) == 0) {
             this.getAllCells().stream()
-                    .filter(cell::isAdjacencyTo)
+                    .filter(cell::isAdjacentTo)
                     .filter(c -> !this.revealedCells.contains(c))
                     .forEach(this::reveal);
         }
