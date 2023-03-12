@@ -14,5 +14,10 @@ public interface Cell {
      */
     int getColumn();
 
+    /**
+     *
+     * @param otherCell to check adjacency.
+     * @return true if this cell is adjacent to otherCell.
+     */
     boolean isAdjacencyTo(Cell otherCell);
 }
