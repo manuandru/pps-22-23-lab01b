@@ -40,12 +40,10 @@ public class OverlapGridImpl implements OverlapGrid {
     public void reveal(Cell cell) {
         this.revealedCells.add(cell);
         if (this.countOfAdjacentBombs(cell) == 0) {
-            for (var c : this.getAllCells()) {
-                if (c.isAdjacencyTo(cell)
-                        && !this.revealedCells.contains(c)) {
-                    this.reveal(c);
-                }
-            }
+            this.getAllCells().stream()
+                    .filter(cell::isAdjacencyTo)
+                    .filter(c -> !this.revealedCells.contains(c))
+                    .forEach(this::reveal);
         }
     }
 
