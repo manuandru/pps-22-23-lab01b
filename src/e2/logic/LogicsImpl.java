@@ -11,7 +11,11 @@ import e2.logic.grid.OverlapGridImpl;
 public class LogicsImpl implements Logics {
 
     private final OverlapGrid grid;
+    private final int size;
+    private final int bombCount;
     public LogicsImpl(int size, int bombs) {
+        this.size = size;
+        this.bombCount = bombs;
         this.grid = new OverlapGridImpl(new GridImpl(size, bombs));
     }
 
@@ -46,5 +50,15 @@ public class LogicsImpl implements Logics {
     @Override
     public void changeFlag(int row, int column) {
         this.grid.changeFlag(new CellImpl(row, column));
+    }
+
+    @Override
+    public boolean won() {
+        var countOfRevealed = this.grid.getAllCells().stream()
+                .map(this.grid::getCellContent)
+                .filter(CellState.EMPTY::equals)
+                .count();
+        var cellToReveal = size*size - bombCount;
+        return cellToReveal == countOfRevealed;
     }
 }

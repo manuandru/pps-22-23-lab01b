@@ -37,4 +37,9 @@ public interface Logics {
      */
     void changeFlag(int row, int column);
 
+    /**
+     *
+     * @return true if won.
+     */
+    boolean won();
 }

@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -103,6 +102,17 @@ class LogicsTest {
                 .count();
         var expected = BOARD_SIZE * BOARD_SIZE;
         assertEquals(expected, countOfRevealed);
+    }
+
+    @Test
+    void testWin() {
+        var noBomb = 0;
+        logics = new LogicsImpl(BOARD_SIZE, noBomb);
+        assertFalse(logics.won());
+        var xToReveal = 0;
+        var yToReveal = 0;
+        logics.checkIfContainsBomb(xToReveal, yToReveal);
+        assertTrue(logics.won());
     }
 
     private List<Pair<Integer, Integer>> getAllPositions() {
