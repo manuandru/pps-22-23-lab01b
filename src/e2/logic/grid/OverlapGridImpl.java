@@ -39,6 +39,14 @@ public class OverlapGridImpl implements OverlapGrid {
     @Override
     public void reveal(Cell cell) {
         this.revealedCells.add(cell);
+        if (this.countOfAdjacentBombs(cell) == 0) {
+            for (var c : this.getAllCells()) {
+                if (c.isAdjacencyTo(cell)
+                        && !this.revealedCells.contains(c)) {
+                    this.reveal(c);
+                }
+            }
+        }
     }
 
     @Override

@@ -9,7 +9,7 @@ import e2.logic.grid.cell.Cell;
 public interface OverlapGrid extends Grid {
 
     /**
-     * Reveal a cell.
+     * Reveal a cell and all adjacent with 0 bombs.
      * @param cell to be revealed.
      */
     void reveal(Cell cell);

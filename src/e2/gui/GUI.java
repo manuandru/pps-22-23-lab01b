@@ -98,6 +98,9 @@ public class GUI extends JFrame {
                 case HIDDEN -> "";
             };
             entry.getKey().setText(render);
+            if (status.equals(RenderStatus.COUNTER)) {
+                entry.getKey().setEnabled(false);
+            }
     	}
     }
     

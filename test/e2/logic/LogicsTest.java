@@ -90,6 +90,21 @@ class LogicsTest {
         );
     }
 
+    @Test
+    void testAdjacentWithCountZeroAreRevealed() {
+        var noBomb = 0;
+        logics = new LogicsImpl(BOARD_SIZE, noBomb);
+        var xToReveal = 0;
+        var yToReveal = 0;
+        logics.checkIfContainsBomb(xToReveal, yToReveal);
+        var countOfRevealed = getAllPositions().stream()
+                .map(p -> logics.getStatus(p.getX(), p.getY()))
+                .filter(RenderStatus.COUNTER::equals)
+                .count();
+        var expected = BOARD_SIZE * BOARD_SIZE;
+        assertEquals(expected, countOfRevealed);
+    }
+
     private List<Pair<Integer, Integer>> getAllPositions() {
         var allPositions = new ArrayList<Pair<Integer, Integer>>();
         for (int i = 0; i < BOARD_SIZE; i++) {
