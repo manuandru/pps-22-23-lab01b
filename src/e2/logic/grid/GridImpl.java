@@ -2,13 +2,13 @@ package e2.logic.grid;
 
 import e2.logic.grid.cell.Cell;
 import e2.logic.grid.cell.CellImpl;
-import e2.logic.grid.cell.CellState;
+import e2.logic.grid.cell.CellContent;
 
 import java.util.*;
 
 public class GridImpl implements Grid {
 
-    private final Map<Cell, CellState> grid = new HashMap<>();
+    private final Map<Cell, CellContent> grid = new HashMap<>();
     private final int gridSize;
     public GridImpl(int size, int bombCount) {
         this.gridSize = size;
@@ -17,9 +17,9 @@ public class GridImpl implements Grid {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (bombsPosition.contains(bombCounter)) {
-                    this.grid.put(new CellImpl(i,j), CellState.BOMB);
+                    this.grid.put(new CellImpl(i,j), CellContent.BOMB);
                 } else {
-                    this.grid.put(new CellImpl(i,j), CellState.EMPTY);
+                    this.grid.put(new CellImpl(i,j), CellContent.EMPTY);
                 }
                 bombCounter++;
             }
@@ -36,7 +36,7 @@ public class GridImpl implements Grid {
     }
 
     @Override
-    public CellState getCellContent(Cell cell) {
+    public CellContent getCellContent(Cell cell) {
         return this.grid.get(cell);
     }
 
@@ -50,7 +50,7 @@ public class GridImpl implements Grid {
         return (int) this.getAllCells().stream()
                 .filter(cell::isAdjacentTo)
                 .map(grid::get)
-                .filter(CellState.BOMB::equals)
+                .filter(CellContent.BOMB::equals)
                 .count();
     }
 }

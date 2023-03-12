@@ -3,7 +3,7 @@ package e2.logic;
 import e2.gui.RenderStatus;
 import e2.logic.grid.cell.Cell;
 import e2.logic.grid.cell.CellImpl;
-import e2.logic.grid.cell.CellState;
+import e2.logic.grid.cell.CellContent;
 import e2.logic.grid.GridImpl;
 import e2.logic.grid.OverlapGrid;
 import e2.logic.grid.OverlapGridImpl;
@@ -23,7 +23,7 @@ public class LogicsImpl implements Logics {
     public boolean checkIfContainsBomb(int row, int column) {
         Cell target = new CellImpl(row, column);
         this.grid.reveal(target);
-        return this.grid.getCellContent(target).equals(CellState.BOMB);
+        return this.grid.getCellContent(target).equals(CellContent.BOMB);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class LogicsImpl implements Logics {
     public boolean won() {
         var countOfRevealed = this.grid.getAllCells().stream()
                 .map(this.grid::getCellContent)
-                .filter(CellState.EMPTY::equals)
+                .filter(CellContent.EMPTY::equals)
                 .count();
         var cellToReveal = size*size - bombCount;
         return cellToReveal == countOfRevealed;

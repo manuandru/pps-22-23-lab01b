@@ -1,7 +1,7 @@
 package e2.logic.grid;
 
 import e2.logic.grid.cell.Cell;
-import e2.logic.grid.cell.CellState;
+import e2.logic.grid.cell.CellContent;
 
 import java.util.Set;
 
@@ -15,7 +15,7 @@ public interface Grid {
      * @param cell to get the Content.
      * @return the content of the cell.
      */
-    CellState getCellContent(Cell cell);
+    CellContent getCellContent(Cell cell);
 
     /**
      *

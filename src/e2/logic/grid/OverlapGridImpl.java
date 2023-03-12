@@ -1,7 +1,7 @@
 package e2.logic.grid;
 
 import e2.logic.grid.cell.Cell;
-import e2.logic.grid.cell.CellState;
+import e2.logic.grid.cell.CellContent;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,14 +16,14 @@ public class OverlapGridImpl implements OverlapGrid {
         this.grid = grid;
     }
     @Override
-    public CellState getCellContent(Cell cell) {
+    public CellContent getCellContent(Cell cell) {
         if (this.revealedCells.contains(cell)) {
             return this.grid.getCellContent(cell);
         }
         if (this.flaggedCells.contains(cell)) {
-            return CellState.FLAG;
+            return CellContent.FLAG;
         }
-        return CellState.HIDDEN;
+        return CellContent.HIDDEN;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class OverlapGridImpl implements OverlapGrid {
     @Override
     public void revealAllBombs() {
         this.grid.getAllCells().stream()
-                .filter(cell -> this.grid.getCellContent(cell).equals(CellState.BOMB))
+                .filter(cell -> this.grid.getCellContent(cell).equals(CellContent.BOMB))
                 .forEach(this::reveal);
     }
 
