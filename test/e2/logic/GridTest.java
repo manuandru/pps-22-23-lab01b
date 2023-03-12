@@ -24,16 +24,11 @@ class GridTest {
 
     @Test
     void testBombsArePut() {
-        var allPositions = new ArrayList<Cell>();
-        for (int i = 0; i < GRID_SIZE; i++) {
-            for (int j = 0; j < GRID_SIZE; j++) {
-                allPositions.add(new CellImpl(i,j));
-            }
-        }
-        var countOfBomb = allPositions.stream()
-                .map(c -> grid.getCellContent(c))
+        var countOfBomb = grid.getAllCells().stream()
+                .map(grid::getCellContent)
                 .filter(CellState.BOMB::equals)
                 .count();
         assertEquals(BOMB_COUNT, countOfBomb);
     }
+
 }
